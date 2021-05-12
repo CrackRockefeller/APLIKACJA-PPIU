@@ -26,5 +26,15 @@ namespace Aplikacja
         {
             this.InitializeComponent();
         }
+
+        private void PassportSignInButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void RegisterButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            
+        }
     }
 }

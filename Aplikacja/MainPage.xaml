@@ -8,7 +8,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="Red">
+        <Button Name="login" HorizontalAlignment="Center" >Zaloguj się</Button>
+        <Button Name="register" HorizontalAlignment="Center" Margin="0,100,0,0">Rejestracja</Button>
 
     </Grid>
 </Page>

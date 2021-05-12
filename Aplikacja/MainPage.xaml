@@ -9,10 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center"/>
             <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
-            
             <TextBox x:Name="UsernameTextBox" Margin="4" Width="250" PlaceholderText="Username"/>
             <PasswordBox x:Name="PasswordTextBox" Margin="4" Width="250" PlaceholderText="Password"/>
             <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
@@ -23,13 +22,7 @@
                PointerPressed="RegisterButtonTextBlock_OnPointerPressed"
                Foreground="DodgerBlue"
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <Border x:Name="PassportStatus" Background="#22B14C"
-               Margin="0,20" Height="100" >
-                <TextBlock x:Name="PassportStatusText" Text="Microsoft Passport is ready to use!"
-             Margin="4" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-            </Border>
-            <TextBlock x:Name="LoginExplaination" FontSize="24" TextAlignment="Center" TextWrapping="Wrap" 
-        Text="Please Note: To demonstrate a login, validation will only occur using the default username 'sampleUsername'"/>
+
         </StackPanel>
 
     </Grid>

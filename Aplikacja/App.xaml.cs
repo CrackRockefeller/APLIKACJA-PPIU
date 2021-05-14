@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccessLibrary;
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +32,8 @@ namespace Aplikacja
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            DataAccess.InitializeDatabase();
         }
 
         /// <summary>

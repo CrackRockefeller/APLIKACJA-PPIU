@@ -10,12 +10,21 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="center">
-            <TextBlock Text="Rejestracja" FontSize="36" Margin="4" TextAlignment="Center"/>
-            <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
-            <TextBox Name="email" Margin="4" Width="250" PlaceholderText="email"/>
-            <TextBox Name="imie" Margin="4" Width="250" PlaceholderText="imie"/>
-            <TextBox Name="haslo" Margin="4" Width="250" PlaceholderText="haslo"/>
-            <TextBox Name="haslo2" Margin="4" Width="250" PlaceholderText="powtórz hasło"/>
+            <TextBlock Text="Rejestracja" FontSize="36" Margin="0 0 0 5" TextAlignment="Center"/>
+            <StackPanel Width="250"> 
+                <ListView Name="Output">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <TextBlock Text="{Binding}" Name="ErrorMessage" Foreground="Red" Width="225" TextAlignment="Center"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <TextBox Name="email" Margin="4" PlaceholderText="email"/>
+                <TextBox Name="imie" Margin="4" PlaceholderText="imie"/>
+                <TextBox Name="haslo" Margin="4" PlaceholderText="haslo"/>
+                
+            </StackPanel>
             <Button x:Name="btnRejestracja" Content="Rejestruj" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center" Margin="0,20" Click="btnRejestracja_Click"/>
         </StackPanel>
     </Grid>

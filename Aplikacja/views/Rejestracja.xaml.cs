@@ -14,14 +14,13 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 using DataAccessLibrary;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+using Aplikacja.modele;
+using Aplikacja.Validators;
+using FluentValidation.Results;
+using System.ComponentModel;
 
 namespace Aplikacja
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Rejestracja : Page
     {
         public Rejestracja()
@@ -31,8 +30,32 @@ namespace Aplikacja
 
         private void btnRejestracja_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.dodajUzytkownika(email.Text, imie.Text, haslo.Text);
-            //TODO  zrobic walidację textboxow
+            BindingList<string> errList = new BindingList<string>();
+
+            Uzytkownicy uzytkownik = new Uzytkownicy();
+            uzytkownik.email = email.Text;
+            uzytkownik.imie = imie.Text;
+            uzytkownik.haslo = haslo.Text;
+
+            //Validate my data
+
+            UzytkownikValidator validator = new UzytkownikValidator();
+
+            ValidationResult results = validator.Validate(uzytkownik);
+
+            if (results.IsValid == false)
+            {
+                foreach (ValidationFailure faliure in results.Errors)
+                {
+                    errList.Add($" {faliure.ErrorMessage}");
+                }
+            } 
+
+            Output.ItemsSource = errList;
+
+            //tu dodaj do bazy
+            //DataAccess.dodajUzytkownika(email.Text, imie.Text, haslo.Text);
+
         }
     }
 }

@@ -81,8 +81,76 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
-
         }
 
+        public static List<String> checkUser(string email, string haslo)
+        {
+            List<String> entries = new List<string>();
+
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db =
+              new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                   ($"select exists( select email, haslo from uzytkownicy where email = \"{email}\" and haslo = \"{haslo}\" limit 1) ", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                   entries.Add(query.GetString(0));
+                }
+                db.Close();
+            }
+            return entries;
+        }
+        public static List<String> checkEmail(string email)
+        {
+            List<String> entries = new List<string>();
+
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db =
+              new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                   ($"select exists( select email, haslo from uzytkownicy where email = \"{email}\" limit 1) ", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    entries.Add(query.GetString(0));
+                }
+                db.Close();
+            }
+            return entries;
+        }
+        public static List<String> checkPassword(string email)
+        {
+            List<String> entries = new List<string>();
+
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db =
+              new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                   ($"select exists( select email, haslo from uzytkownicy where email = \"{email}\" limit 1) ", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    entries.Add(query.GetString(0));
+                }
+                db.Close();
+            }
+            return entries;
+        }
     }
 }

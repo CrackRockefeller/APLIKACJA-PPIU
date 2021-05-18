@@ -11,9 +11,14 @@
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="center">
             <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center"/>
-            <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
-            
-            <TextBox x:Name="UsernameTextBox" Margin="4" Width="250" PlaceholderText="Username"/>
+            <ListView Name="Output">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Text="{Binding}" Name="ErrorMessage" Foreground="Red" Width="225" TextAlignment="Center"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <TextBox x:Name="UsernameTextBox" Margin="4" Width="250" PlaceholderText="Email"/>
             <PasswordBox x:Name="PasswordTextBox" Margin="4" Width="250" PlaceholderText="Password"/>
             <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
                     Click="PassportSignInButton_Click" Width="80" HorizontalAlignment="Center" Margin="0,20"/>

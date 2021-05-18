@@ -18,6 +18,8 @@ using Aplikacja.modele;
 using Aplikacja.Validators;
 using FluentValidation.Results;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Threading;
 
 namespace Aplikacja
 {
@@ -35,7 +37,7 @@ namespace Aplikacja
             Uzytkownicy uzytkownik = new Uzytkownicy();
             uzytkownik.email = email.Text;
             uzytkownik.imie = imie.Text;
-            uzytkownik.haslo = haslo.Text;
+            uzytkownik.haslo = haslo.Password;
 
             //Validate my data
 
@@ -54,8 +56,17 @@ namespace Aplikacja
             Output.ItemsSource = errList;
 
             //tu dodaj do bazy
-            //DataAccess.dodajUzytkownika(email.Text, imie.Text, haslo.Text);
+            if (errList.Count == 0)
+            {
+                DataAccess.dodajUzytkownika(uzytkownik.email, uzytkownik.imie, uzytkownik.haslo);
+                //Thread.Sleep(2000);
+                Frame.GoBack();
+            }
+        }
 
+        private void btnPowrot_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
     }
 }

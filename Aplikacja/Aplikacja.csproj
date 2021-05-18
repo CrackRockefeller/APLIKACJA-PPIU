@@ -122,6 +122,7 @@
     <Compile Include="modele\Typ_wydatku.cs" />
     <Compile Include="modele\Uzytkownicy.cs" />
     <Compile Include="modele\Wydatki.cs" />
+    <Compile Include="Validators\UzytkownikLoginValidator.cs" />
     <Compile Include="Validators\UzytkownikValidator.cs" />
     <Compile Include="views\.xaml.cs">
       <DependentUpon>AfterLogin.xaml</DependentUpon>

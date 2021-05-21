@@ -9,6 +9,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Popup  VerticalOffset="10" HorizontalOffset="200" x:Name="StandardPopup">
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                BorderThickness="2" Width="200" Height="200">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Wprowadź kod" FontSize="24" HorizontalAlignment="Center"/>
+                    <TextBox Name="kodTextBox" PlaceholderText="kod" Text=""/>
+                    <Button Name="potwierdz" Content="potwierdz" Click="potwierdz_Click" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Popup>
         <StackPanel Orientation="Vertical" VerticalAlignment="center">
             <TextBlock Text="Rejestracja" FontSize="36" Margin="0 0 0 5" TextAlignment="Center"/>
             <StackPanel Width="250">

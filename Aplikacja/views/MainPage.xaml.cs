@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Microsoft.Data.Sqlite;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using DataAccessLibrary;
 namespace Aplikacja
 {
     public sealed partial class MainPage : Page
@@ -26,7 +26,13 @@ namespace Aplikacja
         private void PassportSignInButton_Click(object sender, RoutedEventArgs e)
         {
             //TODO walidacja textboxow logowania
-            Frame.Navigate(typeof(AfterLogin));
+            if (DataAccess.sprawdzUzytkownikaiHaslo(UsernameTextBox.Text, PasswordTextBox.Password)){
+                Frame.Navigate(typeof(AfterLogin));
+            }
+            else
+            {
+                ErrorMessage.Text = "Bledny login badz haslo!"; 
+            }
         }
 
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)

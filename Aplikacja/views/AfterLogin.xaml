@@ -11,6 +11,7 @@
     <Grid>
         <StackPanel>
             <Button HorizontalAlignment="Center" Margin="10" Click="AddData" >PrintUsersEmail</Button>
+            <Button HorizontalAlignment="Center" Margin="10" Click="Wyloguj" >Wyloguj</Button>
             <TextBlock Name="error"/>
             <ListView Name="Output">
                 <ListView.ItemTemplate>

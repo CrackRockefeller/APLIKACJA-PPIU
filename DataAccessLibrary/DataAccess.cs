@@ -83,6 +83,52 @@ namespace DataAccessLibrary
             }
 
         }
+        public static bool sprawdzUzytkownika(string email)
+        {
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db =
+              new SqliteConnection($"Filename={dbpath}"))
+            {
+                SqliteCommand cmd = new SqliteCommand("Select id from uzytkownicy where email= @email", db);
+                cmd.Parameters.AddWithValue("@email", email);
+                db.Open();
 
+                var nId = cmd.ExecuteScalar();
+
+                if (nId != null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+        }
+        public static bool sprawdzUzytkownikaiHaslo(string email, string haslo)
+        {
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db =
+              new SqliteConnection($"Filename={dbpath}"))
+            {
+                SqliteCommand cmd = new SqliteCommand("Select id from uzytkownicy where email= @email and haslo = @haslo", db);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@haslo", haslo);
+                db.Open();
+
+                var nId = cmd.ExecuteScalar();
+
+                if (nId != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+        }
     }
 }

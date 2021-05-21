@@ -14,9 +14,10 @@
             <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
             <TextBox Name="email" Margin="4" Width="250" PlaceholderText="email"/>
             <TextBox Name="imie" Margin="4" Width="250" PlaceholderText="imie"/>
-            <TextBox Name="haslo" Margin="4" Width="250" PlaceholderText="haslo"/>
-            <TextBox Name="haslo2" Margin="4" Width="250" PlaceholderText="powtórz hasło"/>
+            <PasswordBox Name="haslo" Margin="4" Width="250" PlaceholderText="haslo"/>
+            <PasswordBox Name="haslo2" Margin="4" Width="250" PlaceholderText="powtórz hasło"/>
             <Button x:Name="btnRejestracja" Content="Rejestruj" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center" Margin="0,20" Click="btnRejestracja_Click"/>
+            <Button x:Name="btnWroc" Content="Wróć" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center" Margin="0,20" Click="btnWroc_Click"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -34,5 +34,10 @@ namespace Aplikacja
         {
             Output.ItemsSource = DataAccess.GetData();
         }
+
+        private void Wyloguj(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+        }
     }
 }

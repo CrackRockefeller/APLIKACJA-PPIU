@@ -72,7 +72,10 @@ namespace Aplikacja
             //tu dodaj do bazy
             if (errList.Count == 0)
             {
-                if (!StandardPopup.IsOpen) StandardPopup.IsOpen = true;
+                if (!StandardPopup.IsOpen)
+                {
+                    StandardPopup.IsOpen = true;
+                }
                 
                 
                 

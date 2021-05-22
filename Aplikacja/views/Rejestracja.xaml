@@ -10,14 +10,33 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="center">
-            <TextBlock Text="Rejestracja" FontSize="36" Margin="4" TextAlignment="Center"/>
-            <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
-            <TextBox Name="email" Margin="4" Width="250" PlaceholderText="email"/>
-            <TextBox Name="imie" Margin="4" Width="250" PlaceholderText="imie"/>
-            <PasswordBox Name="haslo" Margin="4" Width="250" PlaceholderText="haslo"/>
-            <PasswordBox Name="haslo2" Margin="4" Width="250" PlaceholderText="powtórz hasło"/>
-            <Button x:Name="btnRejestracja" Content="Rejestruj" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center" Margin="0,20" Click="btnRejestracja_Click"/>
-            <Button x:Name="btnWroc" Content="Wróć" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center" Margin="0,20" Click="btnWroc_Click"/>
+            <Popup x:Name="StandardPopup" Canvas.ZIndex="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-300 0 0 0">
+                <StackPanel MinWidth="300" MinHeight="250" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Background="AliceBlue">
+                    <TextBlock Text="Wprowadź kod" FontSize="24" Margin="5"/>
+                    <TextBox Name="kodTextBox" PlaceholderText="kod" Text="" Margin="5"/>
+                    <Button Name="potwierdz" Background="DodgerBlue" Foreground="White" Content="potwierdz" Click="potwierdz_Click" Margin="5"/>
+                </StackPanel>
+            </Popup>
+            <TextBlock Text="Rejestracja" FontSize="36" Margin="0 0 0 5" TextAlignment="Center"/>
+            <StackPanel Width="250">
+                <ListView Name="Output">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <TextBlock Text="{Binding}" Name="ErrorMessage" Foreground="Red" Width="225" TextAlignment="Center"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <TextBox Name="email" Margin="4" PlaceholderText="email"/>
+                <TextBox Name="imie" Margin="4" PlaceholderText="imie"/>
+                <PasswordBox Name="haslo" Margin="4" PlaceholderText="haslo"/>
+
+                <StackPanel Orientation="Horizontal" Padding="10" HorizontalAlignment="Center">
+                    <Button x:Name="btnPowrot" Content="Powrót" Background="DodgerBlue" Margin="0 0 20 0" Foreground="White" Click="btnPowrot_Click"/>
+                    <Button x:Name="btnRejestracja" Content="Rejestruj" Background="DodgerBlue" Margin="20 0 0 0" Foreground="White" Click="btnRejestracja_Click"/>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
+
     </Grid>
 </Page>

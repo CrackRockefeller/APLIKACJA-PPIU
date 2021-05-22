@@ -25,11 +25,12 @@ namespace Aplikacja
     /// </summary>
     public sealed partial class AfterLogin : Page
     {
+        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
         public AfterLogin()
         {
             this.InitializeComponent();
+            test.Text = localSettings.Values["loggedUser"].ToString();
         }
-
         private void AddData(object sender, RoutedEventArgs e)
         {
             Output.ItemsSource = DataAccess.GetData();

@@ -14,6 +14,12 @@ using Microsoft.Data.Sqlite;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using DataAccessLibrary;
+using System.Diagnostics;
+using System.ComponentModel;
+using Aplikacja.modele;
+using Aplikacja.Validators;
+using FluentValidation.Results;
+
 namespace Aplikacja
 {
     public sealed partial class MainPage : Page
@@ -23,16 +29,50 @@ namespace Aplikacja
             this.InitializeComponent();
         }
 
+        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
         private void PassportSignInButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO walidacja textboxow logowania
-            if (DataAccess.sprawdzUzytkownikaiHaslo(UsernameTextBox.Text, PasswordTextBox.Password)){
-                Frame.Navigate(typeof(AfterLogin));
-            }
-            else
+            string userName = UsernameTextBox.Text;
+            string password = PasswordTextBox.Password;
+
+            string first = DataAccess.checkUser(userName, password)[0];
+
+            BindingList<string> errList = new BindingList<string>();
+
+            Uzytkownicy uzytkownik = new Uzytkownicy();
+            uzytkownik.email = userName;
+            uzytkownik.haslo = password;
+
+            //Validate my data
+            UzytkownikLoginValidator validator = new UzytkownikLoginValidator();
+            ValidationResult results = validator.Validate(uzytkownik);
+
+            if (results.IsValid == false)
             {
-                ErrorMessage.Text = "Bledny login badz haslo!"; 
+                foreach (ValidationFailure faliure in results.Errors)
+                {
+                    errList.Add($" {faliure.ErrorMessage}");
+                }
             }
+
+            Output.ItemsSource = errList;
+
+            if (errList.Count == 0)
+            {
+                Debug.WriteLine("userCheck: " + first);
+                if (first == "1")
+                {
+                    localSettings.Values["loggedUser"] = userName;
+                    Debug.WriteLine("localSetting loggedUser:" + localSettings.Values["loggedUser"]);
+                    Frame.Navigate(typeof(AfterLogin));
+                }
+                else
+                {
+                    errList.Add("Email lub hasło niepoprawne!");
+                }
+            }
+            //Frame.Navigate(typeof(AfterLogin));
         }
 
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)

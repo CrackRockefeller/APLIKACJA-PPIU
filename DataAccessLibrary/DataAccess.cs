@@ -81,54 +81,76 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
-
         }
-        public static bool sprawdzUzytkownika(string email)
+
+        public static List<String> checkUser(string email, string haslo)
         {
+            List<String> entries = new List<string>();
+
             string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
             using (SqliteConnection db =
               new SqliteConnection($"Filename={dbpath}"))
             {
-                SqliteCommand cmd = new SqliteCommand("Select id from uzytkownicy where email= @email", db);
-                cmd.Parameters.AddWithValue("@email", email);
                 db.Open();
 
-                var nId = cmd.ExecuteScalar();
+                SqliteCommand selectCommand = new SqliteCommand
+                   ($"select exists( select email, haslo from uzytkownicy where email = \"{email}\" and haslo = \"{haslo}\" limit 1) ", db);
 
-                if (nId != null)
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
                 {
-                    return false;
+                   entries.Add(query.GetString(0));
                 }
-                else
-                {
-                    return true;
-                }
+                db.Close();
             }
-
+            return entries;
         }
-        public static bool sprawdzUzytkownikaiHaslo(string email, string haslo)
+        public static List<String> checkEmail(string email)
         {
+            List<String> entries = new List<string>();
+
             string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
             using (SqliteConnection db =
               new SqliteConnection($"Filename={dbpath}"))
             {
-                SqliteCommand cmd = new SqliteCommand("Select id from uzytkownicy where email= @email and haslo = @haslo", db);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@haslo", haslo);
                 db.Open();
 
-                var nId = cmd.ExecuteScalar();
+                SqliteCommand selectCommand = new SqliteCommand
+                   ($"select exists( select email, haslo from uzytkownicy where email = \"{email}\" limit 1) ", db);
 
-                if (nId != null)
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
                 {
-                    return true;
+                    entries.Add(query.GetString(0));
                 }
-                else
-                {
-                    return false;
-                }
+                db.Close();
             }
+            return entries;
+        }
+        public static List<String> checkPassword(string email)
+        {
+            List<String> entries = new List<string>();
 
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db =
+              new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                   ($"select exists( select email, haslo from uzytkownicy where email = \"{email}\" limit 1) ", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    entries.Add(query.GetString(0));
+                }
+                db.Close();
+            }
+            return entries;
         }
     }
 }

@@ -23,10 +23,10 @@ namespace Aplikacja
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AfterLogin : Page
+    public sealed partial class DodawanieWpisu : Page
     {
         Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-        public AfterLogin()
+        public DodawanieWpisu()
         {
             this.InitializeComponent();
             test.Text = localSettings.Values["loggedUser"].ToString();
@@ -54,8 +54,6 @@ namespace Aplikacja
                 test2.Text = "Wprowadz jakas kwote!";
             }
         }
-<<<<<<< Updated upstream
-=======
 
         private void btnCofnij(object sender, RoutedEventArgs e)
         {
@@ -74,6 +72,5 @@ namespace Aplikacja
                 txtKwota.Text = "";
             }
         }
->>>>>>> Stashed changes
     }
 }

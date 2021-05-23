@@ -33,7 +33,7 @@ namespace Aplikacja.views
 
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(AfterLogin));
+            Frame.Navigate(typeof(DodawanieWpisu));
         }
 
         private void btnUstawienia_Click(object sender, RoutedEventArgs e)

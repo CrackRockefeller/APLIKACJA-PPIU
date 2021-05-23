@@ -19,6 +19,7 @@ using System.ComponentModel;
 using Aplikacja.modele;
 using Aplikacja.Validators;
 using FluentValidation.Results;
+using Aplikacja.views;
 
 namespace Aplikacja
 {
@@ -65,7 +66,7 @@ namespace Aplikacja
                 {
                     localSettings.Values["loggedUser"] = userName;
                     Debug.WriteLine("localSetting loggedUser:" + localSettings.Values["loggedUser"]);
-                    Frame.Navigate(typeof(AfterLogin));
+                    Frame.Navigate(typeof(PanelUzytkownika));
                 }
                 else
                 {

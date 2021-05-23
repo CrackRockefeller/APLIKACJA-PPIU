@@ -125,7 +125,7 @@
     <Compile Include="Validators\UzytkownikLoginValidator.cs" />
     <Compile Include="Validators\UzytkownikValidator.cs" />
     <Compile Include="views\.xaml.cs">
-      <DependentUpon>AfterLogin.xaml</DependentUpon>
+      <DependentUpon>DodawanieWpisu.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -155,7 +155,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="views\AfterLogin.xaml">
+    <Page Include="views\DodawanieWpisu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

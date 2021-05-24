@@ -2,3 +2,4 @@
 2. Rejestracja napisać że wysłano kod na maila, info że podano zły kod.
 3. SZYFRIWANIE HASŁO
 4. Odzyskaj hasło 
+5. Usuwanie z listy

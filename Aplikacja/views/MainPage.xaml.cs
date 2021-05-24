@@ -65,7 +65,7 @@ namespace Aplikacja
                 {
                     localSettings.Values["loggedUser"] = userName;
                     Debug.WriteLine("localSetting loggedUser:" + localSettings.Values["loggedUser"]);
-                    Frame.Navigate(typeof(views.PanelUzytkownika));
+                    Frame.Navigate(typeof(AfterLogin));
                 }
                 else
                 {

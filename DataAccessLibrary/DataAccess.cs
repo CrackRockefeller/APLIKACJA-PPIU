@@ -56,7 +56,26 @@ namespace DataAccessLibrary
                 return "Blad podczas pobrania";
             
         }
-        public static List<String> GetData(string email)
+        public static void updateEmailUzytkownika(string email, int uzytkownicy_id)
+        {
+
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand updateCommand = new SqliteCommand
+                    ("UPDATE uzytkownicy set email = @email where uzytkownicy_id=@uzytkownicy_id", db);
+
+                updateCommand.Parameters.AddWithValue("@email", email);
+                updateCommand.Parameters.AddWithValue("@uzytkownicy_id", uzytkownicy_id);
+
+                updateCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
+            public static List<String> GetData(string email)
         {
             List<String> entries = new List<string>();
 

@@ -38,7 +38,7 @@ namespace Aplikacja.views
 
         private void btnUstawienia_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(Ustawienia));
         }
 
         private void btnWyloguj_Click(object sender, RoutedEventArgs e)

@@ -133,7 +133,7 @@ namespace Aplikacja
                 }
                 else
                 {
-                    Debug.WriteLine("zły kod z maila");
+                    txtWyswietl.Text="Błędny kod, spróbuj ponownie.";
                 }
                 
             }

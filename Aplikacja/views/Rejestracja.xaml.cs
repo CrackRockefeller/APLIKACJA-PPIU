@@ -139,5 +139,10 @@ namespace Aplikacja
             }
             
         }
+
+        private void Cofnij_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace Aplikacja
         public DodawanieWpisu()
         {
             this.InitializeComponent();
+            test.Text = localSettings.Values["loggedUser"].ToString();
         }
         private void btnDodajWpis(object sender, RoutedEventArgs e)
         {

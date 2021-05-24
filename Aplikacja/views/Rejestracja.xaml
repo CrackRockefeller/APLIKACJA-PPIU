@@ -15,6 +15,7 @@
                     <TextBlock Text="Wprowadź kod" FontSize="24" Margin="5"/>
                     <TextBox Name="kodTextBox" PlaceholderText="kod" Text="" Margin="5"/>
                     <Button Name="potwierdz" Background="DodgerBlue" Foreground="White" Content="potwierdz" Click="potwierdz_Click" Margin="5"/>
+                    <Button Name="cofnijPopup" Background="DodgerBlue" Foreground="White" Content="Cofnij" Click="Cofnij_Click" Margin="5"/>
                 </StackPanel>
             </Popup>
             <TextBlock Text="Rejestracja" FontSize="36" Margin="0 0 0 5" TextAlignment="Center"/>

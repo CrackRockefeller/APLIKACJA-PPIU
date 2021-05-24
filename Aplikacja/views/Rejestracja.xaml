@@ -21,7 +21,7 @@
             </Popup>
             <TextBlock Text="Rejestracja" FontSize="36" Margin="0 0 0 5" TextAlignment="Center"/>
             <TextBlock Text="{Binding}" Name="CapsLock" Foreground="Yellow" Width="225" TextAlignment="Center"/>
-            <StackPanel Width="250">
+            <StackPanel MaxWidth="260">
                 <ListView Name="Output">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="x:String">

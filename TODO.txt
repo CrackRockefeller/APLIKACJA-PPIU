@@ -1,6 +1,4 @@
-1. Walidacja dać do info długość itp.
+1. Dodawanie zdjęć.
 2. Rejestracja napisać że wysłano kod na maila, info że podano zły kod.
-3. Info o caps lock do login ( może też do rejestracja)
-4. wycentrować info o złych danych logowanie
-5. SZYFRIWANIE HASŁO
-6. Odzyskaj hasło 
+3. SZYFRIWANIE HASŁO
+4. Odzyskaj hasło 

@@ -19,8 +19,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="1" Grid.Column="1"  Name="test" HorizontalAlignment="Left" FontSize="30"/>
-        <ListView Grid.Row="1" Grid.Column="2" Name="Output" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="15" Margin="0,50,0,0">
+        <TextBlock Grid.Row="1" Grid.Column="1"  Name="test" HorizontalAlignment="Center" FontSize="30"/>
+        <ListView Grid.Row="1" Grid.Column="2" Name="Output" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Margin="0,50,0,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}"/>
@@ -28,7 +28,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="1" Grid.Column="0" Background="#FF7E7E7E">
-            <Image Margin="5" Width="50" Source="https://www.logosurfer.com/wp-content/uploads/2018/03/zbrush-logo_0.png"/>
+            <Image Margin="0 5 0 5" Source="/Assets/logo1.png" Width="50"/>
             <AppBarButton Name="btnDodaj"  Icon="Add" Label="Dodaj wpłatę" Click="btnDodaj_Click"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Background="#FF7E7E7E">

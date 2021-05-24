@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid KeyDown="Grid_KeyDown">
         <StackPanel Orientation="Vertical" VerticalAlignment="center">
             <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center"/>
             <ListView Name="Output">
@@ -21,7 +21,7 @@
             <TextBox x:Name="UsernameTextBox" Margin="4" Width="250" PlaceholderText="Email"/>
             <PasswordBox x:Name="PasswordTextBox" Margin="4" Width="250" PlaceholderText="Password"/>
             <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
-                    Click="PassportSignInButton_Click" Width="80" HorizontalAlignment="Center" Margin="0,20"/>
+                    Click="PassportSignInButton_Click"  Width="80" HorizontalAlignment="Center" Margin="0,20"/>
             <TextBlock Text="Don't have an account?"
                 TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
             <TextBlock x:Name="RegisterButtonTextBlock" Text="Register now"

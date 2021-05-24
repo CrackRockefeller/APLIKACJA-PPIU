@@ -36,10 +36,27 @@ namespace Aplikacja
         int a = rnd.Next(0, 10000);
 
         Uzytkownicy uzytkownik = new Uzytkownicy();
-
+        DispatcherTimer dt;
         public Rejestracja()
         {
             this.InitializeComponent();
+            dt = new DispatcherTimer();
+            dt.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            dt.Tick += Dt_Tick;
+            dt.Start();
+        }
+
+        private void Dt_Tick(object sender, object e)
+        {
+            var cl = Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.CapitalLock);
+            if (cl.HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Locked))
+            {
+                CapsLock.Text = "CapsLock jest włączony";
+            }
+            else
+            {
+                CapsLock.Text = "";
+            }
         }
 
         private void btnRejestracja_Click(object sender, RoutedEventArgs e)

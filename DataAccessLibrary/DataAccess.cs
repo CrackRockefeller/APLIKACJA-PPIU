@@ -21,42 +21,20 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                string tableUzytkowicy = "CREATE TABLE IF NOT EXISTS \"uzytkownicy\" ( `uzytkownicy_id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `email` TEXT NOT NULL UNIQUE, `imie` TEXT NOT NULL, `haslo` TEXT NOT NULL )";
-                string tableWydatki = "CREATE TABLE IF NOT EXISTS \"wydatki\" ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `kwota` FLOAT NOT NULL, `opis` TEXT, `data` TEXT NOT NULL, `zdjecie_paragonu` BLOB UNIQUE, `uzytkownicy_id` INTEGER, `typWydatku` TEXT, FOREIGN KEY(`uzytkownicy_id`) REFERENCES `uzytkownicy`(`uzytkownicy_id`))";
-
-                SqliteCommand createTable1 = new SqliteCommand(tableUzytkowicy, db);
-                SqliteCommand createTable2 = new SqliteCommand(tableWydatki, db);
+                string tableWydatki = "CREATE TABLE IF NOT EXISTS \"wydatki\" ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `kwota` INTEGER NOT NULL, `opis` TEXT, `data` TEXT NOT NULL, `zdjecie_paragonu` BLOB UNIQUE, `uzytkownicy_id` INTEGER, `typWydatku_id` INTEGER, FOREIGN KEY(`uzytkownicy_id`) REFERENCES `uzytkownicy`(`uzytkownicy_id`), FOREIGN KEY(`typWydatku_id`) REFERENCES `wydatki`(`typWydatku_id`) )";
+                string tableTyp_wydatku = "CREATE TABLE IF NOT EXISTS \"typ_wydatku\" ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `nazwa` TEXT NOT NULL UNIQUE )";
+                string tableUzytkowicy = "CREATE TABLE IF NOT EXISTS \"uzytkownicy\" ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `email` TEXT NOT NULL UNIQUE, `imie` TEXT NOT NULL, `haslo` TEXT NOT NULL )";
+                SqliteCommand createTable1 = new SqliteCommand(tableWydatki, db);
+                SqliteCommand createTable2 = new SqliteCommand(tableTyp_wydatku, db);
+                SqliteCommand createTable3 = new SqliteCommand(tableUzytkowicy, db);
 
                 createTable1.ExecuteReader();
                 createTable2.ExecuteReader();
+                createTable3.ExecuteReader();
             }
         }
-        public static string sprawdzUzytkownika(string email)
-        {
 
-            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
-            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
-            {
-                db.Open();
-
-                SqliteCommand selectCommand = new SqliteCommand
-                    ("select uzytkownicy_id from uzytkownicy where email=@email", db);
-
-                selectCommand.Parameters.AddWithValue("@email", email);
-                SqliteDataReader query = selectCommand.ExecuteReader();
-
-                while (query.Read())
-                {
-                    return query.GetString(0);
-                    
-                }
-
-                db.Close();
-            }
-                return "Blad podczas pobrania";
-            
-        }
-        public static List<String> GetData(string email)
+        public static List<String> GetData()
         {
             List<String> entries = new List<string>();
 
@@ -66,14 +44,13 @@ namespace DataAccessLibrary
                 db.Open();
 
                 SqliteCommand selectCommand = new SqliteCommand
-                    ("select kwota, opis, data, typWydatku from wydatki, uzytkownicy where uzytkownicy.uzytkownicy_id = wydatki.uzytkownicy_id and uzytkownicy.email= @email", db);
+                    ("SELECT email from uzytkownicy", db);
 
-                selectCommand.Parameters.AddWithValue("@email", email);
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
                 while (query.Read())
                 {
-                    entries.Add(query["kwota"].ToString() + " " + query["data"].ToString() + " " + query["typWydatku"].ToString() + " " + query["opis"].ToString());
+                    entries.Add(query.GetString(0));
                 }
 
                 db.Close();
@@ -105,32 +82,7 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
-        public static void dodajWpisUzytkownika(double kwota, string opis, string data, int uzytkownicy_id, string typWydatku)
-        {
-            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
-            using (SqliteConnection db =
-              new SqliteConnection($"Filename={dbpath}"))
-            {
-                db.Open();
 
-                SqliteCommand insertCommand = new SqliteCommand
-                {
-                    Connection = db,
-
-                    // Use parameterized query to prevent SQL injection attacks
-                    CommandText = "INSERT INTO wydatki(kwota, opis, data, uzytkownicy_id, typWydatku) VALUES (@kwota, @opis, @data, @uzytkownicy_id, @typWydatku)"
-                };
-                insertCommand.Parameters.AddWithValue("@kwota", kwota);
-                insertCommand.Parameters.AddWithValue("@opis", opis);
-                insertCommand.Parameters.AddWithValue("@data", data);
-                insertCommand.Parameters.AddWithValue("@uzytkownicy_id", uzytkownicy_id);
-                insertCommand.Parameters.AddWithValue("@typWydatku", typWydatku);
-                //Potrzeba jeszcze dodawania zdjecia
-                insertCommand.ExecuteReader();
-
-                db.Close();
-            }
-        }
         public static List<String> checkUser(string email, string haslo)
         {
             List<String> entries = new List<string>();

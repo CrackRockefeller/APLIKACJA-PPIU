@@ -12,8 +12,9 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="center">
             <Popup x:Name="StandardPopup" Canvas.ZIndex="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-300 0 0 0">
                 <StackPanel MinWidth="300" MinHeight="250" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Background="AliceBlue">
-                    <TextBlock Text="Wprowadź kod" FontSize="24" Margin="5"/>
+                    <TextBlock Text="Wprowadź kod, który otrzymałeś w mailu:" FontSize="24" Margin="5"/>
                     <TextBox Name="kodTextBox" PlaceholderText="kod" Text="" Margin="5"/>
+                    <TextBlock Name="txtWyswietl" Text="" FontSize="24" Margin="5" Foreground="Red"/>
                     <Button Name="potwierdz" Background="DodgerBlue" Foreground="White" Content="potwierdz" Click="potwierdz_Click" Margin="5"/>
                     <Button Name="cofnijPopup" Background="DodgerBlue" Foreground="White" Content="Cofnij" Click="Cofnij_Click" Margin="5"/>
                 </StackPanel>

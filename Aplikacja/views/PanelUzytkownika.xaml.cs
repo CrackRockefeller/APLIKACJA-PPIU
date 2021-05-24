@@ -1,5 +1,4 @@
-﻿using DataAccessLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,27 +22,9 @@ namespace Aplikacja.views
     /// </summary>
     public sealed partial class PanelUzytkownika : Page
     {
-        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
         public PanelUzytkownika()
         {
             this.InitializeComponent();
-            test.Text = localSettings.Values["loggedUser"].ToString();
-            Output.ItemsSource = DataAccess.GetData(test.Text);
-        }
-
-        private void btnDodaj_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(DodawanieWpisu));
-        }
-
-        private void btnUstawienia_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnWyloguj_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.GoBack();
         }
     }
 }

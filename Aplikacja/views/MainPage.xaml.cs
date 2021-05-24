@@ -21,13 +21,33 @@ using Aplikacja.Validators;
 using FluentValidation.Results;
 using Aplikacja.views;
 
+using Microsoft.VisualBasic;
+
 namespace Aplikacja
 {
     public sealed partial class MainPage : Page
     {
+        DispatcherTimer dt;
         public MainPage()
         {
             this.InitializeComponent();
+            dt = new DispatcherTimer();
+            dt.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            dt.Tick += Dt_Tick;
+            dt.Start();
+        }
+
+        private void Dt_Tick(object sender, object e)
+        {
+            var cl = Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.CapitalLock);
+            if (cl.HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Locked))
+            {
+                CapsLock.Text = "CapsLock jest włączony";
+            }
+            else
+            {
+                CapsLock.Text = "";
+            }
         }
 
         Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
@@ -83,6 +103,7 @@ namespace Aplikacja
 
         private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
         {
+
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 string userName = UsernameTextBox.Text;
@@ -126,5 +147,7 @@ namespace Aplikacja
                 }
             }
         }
+
+
     }
 }

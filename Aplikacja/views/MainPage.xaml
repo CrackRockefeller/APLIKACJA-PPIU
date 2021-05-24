@@ -9,11 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid KeyDown="Grid_KeyDown">
-        <StackPanel Orientation="Vertical" VerticalAlignment="center">
+        <StackPanel VerticalAlignment="center" MaxWidth="260">
             <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center"/>
             <TextBlock Text="{Binding}" Name="CapsLock" Foreground="Yellow" Width="225" TextAlignment="Center"/>
             <ListView Name="Output">
-                <ListView.ItemTemplate>
+                <ListView.ItemTemplate >
                     <DataTemplate x:DataType="x:String">
                         <TextBlock Text="{Binding}" Name="ErrorMessage" Foreground="Red" Width="225" TextAlignment="Center"/>
                     </DataTemplate>

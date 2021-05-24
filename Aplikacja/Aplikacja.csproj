@@ -125,7 +125,7 @@
     <Compile Include="Validators\UzytkownikLoginValidator.cs" />
     <Compile Include="Validators\UzytkownikValidator.cs" />
     <Compile Include="views\.xaml.cs">
-      <DependentUpon>AfterLogin.xaml</DependentUpon>
+      <DependentUpon>DodawanieWpisu.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -155,7 +155,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="views\AfterLogin.xaml">
+    <Page Include="views\DodawanieWpisu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,6 +163,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+<<<<<<< HEAD
+=======
+    <Page Include="views\PanelUzytkownika.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+>>>>>>> parent of 3e14c2e (Merge branch 'master' of https://github.com/CrackRockefeller/APLIKACJA-PPIU)
     <Page Include="views\Rejestracja.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

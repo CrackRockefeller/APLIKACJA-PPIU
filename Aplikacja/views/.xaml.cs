@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
 using DataAccessLibrary;
 
 
@@ -29,6 +28,7 @@ namespace Aplikacja
         public DodawanieWpisu()
         {
             this.InitializeComponent();
+            test.Text = localSettings.Values["loggedUser"].ToString();
         }
         private void btnDodajWpis(object sender, RoutedEventArgs e)
         {

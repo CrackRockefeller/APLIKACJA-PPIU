@@ -148,6 +148,9 @@ namespace Aplikacja
             }
         }
 
-
+        private void RestoreButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RecoveryPassword),UsernameTextBox.Text);
+        }
     }
 }

@@ -29,6 +29,12 @@
                PointerPressed="RegisterButtonTextBlock_OnPointerPressed"
                Foreground="DodgerBlue"
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBlock Text="Nie pamiętasz hasła ?"
+                TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="RestoreButtonTextBlock" Text="Zresetuj hasło"
+               PointerPressed="RestoreButtonTextBlock_OnPointerPressed"
+               Foreground="DodgerBlue"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
 
         </StackPanel>
         <Button Content="Button" Margin="-422,723,0,0" VerticalAlignment="Top"/>

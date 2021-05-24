@@ -79,7 +79,8 @@ namespace Aplikacja
                 {
                     errList.Add($" {faliure.ErrorMessage}");
                 }
-            } 
+            }
+            
 
             Output.ItemsSource = errList;
 

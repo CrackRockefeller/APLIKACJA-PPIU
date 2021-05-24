@@ -46,9 +46,6 @@ namespace Aplikacja
         {
             BindingList<string> errList = new BindingList<string>();
 
-            
-
-            
             uzytkownik.email = email.Text;
             uzytkownik.imie = imie.Text;
             uzytkownik.haslo = haslo.Password;
@@ -76,9 +73,6 @@ namespace Aplikacja
                 {
                     StandardPopup.IsOpen = true;
                 }
-                
-                
-                
 
                 var message = new MimeMessage();
                 message.From.Add(new MailboxAddress("uwpApplication", "uwpapplication.uwpapplication@interia.pl"));
@@ -112,8 +106,6 @@ namespace Aplikacja
             }
         }
 
-
-
         private void btnPowrot_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
@@ -143,6 +135,20 @@ namespace Aplikacja
         private void Cofnij_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
+        }
+
+        private void haslo_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            ToolTip toolTip = new ToolTip();
+            toolTip.Content = 
+@"schemat hasła: 
+* długość od 8-15 znaków
+* minimum jedna: 
+    -cyfra 
+    -mała litera
+    -duża litera
+    -znak specjalny: .#?!@$%^&*- ";
+            ToolTipService.SetToolTip(haslo, toolTip);
         }
     }
 }

@@ -30,7 +30,11 @@
 
                 <TextBox Name="email" Margin="4" PlaceholderText="email"/>
                 <TextBox Name="imie" Margin="4" PlaceholderText="imie"/>
-                <PasswordBox Name="haslo" Margin="4" PlaceholderText="haslo"/>
+                <PasswordBox Name="haslo" Margin="4" PlaceholderText="haslo" PointerEntered="haslo_PointerEntered">
+                    <ToolTipService.ToolTip>
+                        <ToolTip CornerRadius="10" BorderThickness="1"/>
+                    </ToolTipService.ToolTip>
+                </PasswordBox>
 
                 <StackPanel Orientation="Horizontal" Padding="10" HorizontalAlignment="Center">
                     <Button x:Name="btnPowrot" Content="Powrót" Background="DodgerBlue" Margin="0 0 20 0" Foreground="White" Click="btnPowrot_Click"/>

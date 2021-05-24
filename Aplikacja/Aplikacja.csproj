@@ -131,6 +131,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="views\PanelUzytkownika.xaml.cs">
+      <DependentUpon>PanelUzytkownika.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\Rejestracja.xaml.cs">
       <DependentUpon>Rejestracja.xaml</DependentUpon>
     </Compile>
@@ -163,13 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-<<<<<<< HEAD
-=======
     <Page Include="views\PanelUzytkownika.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
->>>>>>> parent of 3e14c2e (Merge branch 'master' of https://github.com/CrackRockefeller/APLIKACJA-PPIU)
     <Page Include="views\Rejestracja.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,9 +190,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
-      <Version>7.0.2</Version>
     </PackageReference>
     <PackageReference Include="WinUX.UWP">
       <Version>2.4.17005.1</Version>

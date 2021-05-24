@@ -66,11 +66,7 @@ namespace Aplikacja
                 {
                     localSettings.Values["loggedUser"] = userName;
                     Debug.WriteLine("localSetting loggedUser:" + localSettings.Values["loggedUser"]);
-<<<<<<< HEAD
-                    Frame.Navigate(typeof(AfterLogin));
-=======
                     Frame.Navigate(typeof(PanelUzytkownika));
->>>>>>> parent of 3e14c2e (Merge branch 'master' of https://github.com/CrackRockefeller/APLIKACJA-PPIU)
                 }
                 else
                 {

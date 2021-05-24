@@ -29,7 +29,6 @@ namespace Aplikacja
         public DodawanieWpisu()
         {
             this.InitializeComponent();
-            test.Text = localSettings.Values["loggedUser"].ToString();
         }
         private void btnDodajWpis(object sender, RoutedEventArgs e)
         {
@@ -43,6 +42,7 @@ namespace Aplikacja
                     string data = DatePickerData.Date.ToString("yyyy-MM-dd");
                     double kwota = Convert.ToDouble(kwotaWpisana);
                     DataAccess.dodajWpisUzytkownika(kwota, txtOpis.Text, data, idUzytkownika, Convert.ToString(comboBoxTypWydatku.SelectedItem)); //trzeba jeszcze jakos zdjecie dodawac 
+                    Frame.GoBack();
                 }
                 else
                 {

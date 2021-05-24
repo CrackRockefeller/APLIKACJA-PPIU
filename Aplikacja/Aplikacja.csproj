@@ -144,6 +144,13 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\left-arrow-back-svgrepo-com.svg" />
+    <Content Include="Assets\logo1.png" />
+    <Content Include="Assets\logout-box-line.png" />
+    <Content Include="Assets\logout-box-line.svg" />
+    <Content Include="Assets\settings-5-line %281%29.png" />
+    <Content Include="Assets\settings-5-line.svg" />
+    <Content Include="Assets\slack.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -152,6 +159,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\goBack.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

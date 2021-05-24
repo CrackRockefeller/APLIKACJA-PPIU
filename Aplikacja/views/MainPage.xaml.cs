@@ -80,6 +80,51 @@ namespace Aplikacja
         {
             Frame.Navigate(typeof(Rejestracja));
         }
-        
+
+        private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                string userName = UsernameTextBox.Text;
+                string password = PasswordTextBox.Password;
+
+                string first = DataAccess.checkUser(userName, password)[0];
+
+                BindingList<string> errList = new BindingList<string>();
+
+                Uzytkownicy uzytkownik = new Uzytkownicy();
+                uzytkownik.email = userName;
+                uzytkownik.haslo = password;
+
+                //Validate my data
+                UzytkownikLoginValidator validator = new UzytkownikLoginValidator();
+                ValidationResult results = validator.Validate(uzytkownik);
+
+                if (results.IsValid == false)
+                {
+                    foreach (ValidationFailure faliure in results.Errors)
+                    {
+                        errList.Add($" {faliure.ErrorMessage}");
+                    }
+                }
+
+                Output.ItemsSource = errList;
+
+                if (errList.Count == 0)
+                {
+                    Debug.WriteLine("userCheck: " + first);
+                    if (first == "1")
+                    {
+                        localSettings.Values["loggedUser"] = userName;
+                        Debug.WriteLine("localSetting loggedUser:" + localSettings.Values["loggedUser"]);
+                        Frame.Navigate(typeof(PanelUzytkownika));
+                    }
+                    else
+                    {
+                        errList.Add("Email lub hasło niepoprawne!");
+                    }
+                }
+            }
+        }
     }
 }

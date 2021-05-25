@@ -9,7 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Orientation="Vertical" VerticalAlignment="center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ListView Name="Output">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Text="{Binding}" Name="ErrorMessage" Foreground="Red" Width="225" TextAlignment="Left"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <x:String>erooooooooorr</x:String>
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="center">
             <Popup x:Name="StandardPopup" Canvas.ZIndex="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-300 0 0 0">
                 <StackPanel MinWidth="300" MinHeight="250" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Background="AliceBlue">
                     <TextBlock Text="Wprowadź kod, który otrzymałeś w mailu:" FontSize="24" Margin="5"/>
@@ -22,13 +37,7 @@
             <TextBlock Text="Rejestracja" FontSize="36" Margin="0 0 0 5" TextAlignment="Center"/>
             <TextBlock Text="{Binding}" Name="CapsLock" Foreground="Yellow" Width="225" TextAlignment="Center"/>
             <StackPanel MaxWidth="260">
-                <ListView Name="Output">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="x:String">
-                            <TextBlock Text="{Binding}" Name="ErrorMessage" Foreground="Red" Width="225" TextAlignment="Center"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+
 
                 <TextBox Name="email" Margin="4" PlaceholderText="Email"/>
                 <TextBox Name="imie" Margin="4" PlaceholderText="Imię"/>

@@ -1,7 +1,11 @@
-﻿using DataAccessLibrary;
+﻿using Aplikacja.modele;
+using Aplikacja.Validators;
+using DataAccessLibrary;
+using FluentValidation.Results;
 using MailKit.Net.Smtp;
 using MimeKit;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -15,6 +19,7 @@ namespace Aplikacja.views
     /// </summary>
     public sealed partial class Ustawienia : Page
     {
+        Uzytkownicy uzytkownik = new Uzytkownicy();
         private bool wyslano = false;
         public static Random rnd = new Random();
         int a = rnd.Next(0, 10000);
@@ -74,13 +79,36 @@ namespace Aplikacja.views
 
         private void btnZmienHaslo(object sender, RoutedEventArgs e)
         {
-            if (psBZmienHaslo.Password.Equals(psBZmienHasloPotwierdz.Password))
+            BindingList<string> errList = new BindingList<string>();
+
+            uzytkownik.haslo = psBZmienHaslo.Password;
+
+            //Validate my data
+
+            ZmienHasloValidator validator = new ZmienHasloValidator();
+
+            ValidationResult results = validator.Validate(uzytkownik);
+
+            if (results.IsValid == false)
             {
-                int idUzytkownika = Convert.ToInt32(DataAccess.sprawdzUzytkownika(aktEmail.Text));
-                DataAccess.updateHasloUzytkownika(psBZmienHaslo.Password, idUzytkownika);
-                Frame.GoBack();
+                foreach (ValidationFailure faliure in results.Errors)
+                {
+                    errList.Add($" {faliure.ErrorMessage}");
+                }
             }
-            else { txtError2.Text = "Hasla nie sa identyczne!"; }
+
+            Output.ItemsSource = errList;
+
+            if (errList.Count == 0)
+            {
+                if (psBZmienHaslo.Password.Equals(psBZmienHasloPotwierdz.Password))
+                {
+                    int idUzytkownika = Convert.ToInt32(DataAccess.sprawdzUzytkownika(aktEmail.Text));
+                    DataAccess.updateHasloUzytkownika(psBZmienHaslo.Password, idUzytkownika);
+                    Frame.GoBack();
+                }
+                else { txtError2.Text = "Hasla nie sa identyczne!"; }
+            }
         }
 
         private void potwierdz_Click(object sender, RoutedEventArgs e)

@@ -123,6 +123,7 @@
     <Compile Include="modele\Wydatki.cs" />
     <Compile Include="Validators\UzytkownikLoginValidator.cs" />
     <Compile Include="Validators\UzytkownikValidator.cs" />
+    <Compile Include="Validators\ZmienHasloValidator.cs" />
     <Compile Include="views\.xaml.cs">
       <DependentUpon>DodawanieWpisu.xaml</DependentUpon>
     </Compile>

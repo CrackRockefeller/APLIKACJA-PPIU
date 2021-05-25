@@ -126,5 +126,17 @@ namespace Aplikacja
                 }
             }
         }
+
+        private void CheckBox_Changed(object sender, RoutedEventArgs e)
+        {
+            if (revealModeCheckBox.IsChecked == true)
+            {
+                PasswordTextBox.PasswordRevealMode = PasswordRevealMode.Visible;
+            }
+            else
+            {
+                PasswordTextBox.PasswordRevealMode = PasswordRevealMode.Hidden;
+            }
+        }
     }
 }

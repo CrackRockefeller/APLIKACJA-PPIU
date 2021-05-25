@@ -48,10 +48,13 @@
         <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Padding="20">
             <TextBlock Name="test" Text="" FontSize="30" HorizontalAlignment="Center"/>
             <TextBlock Name="test2" Text="" FontSize="30"/>
-            <TextBox Name="txtKwota" PlaceholderText="0,00"  FontSize="30" TextChanged="txtKwota_TextChanged"/>
-            <TextBox Name="txtOpis" PlaceholderText="opis" FontSize="30"/>
-            <DatePicker Name="DatePickerData" FontSize="30"/>
-            <ComboBox Name="comboBoxTypWydatku" Text="Typ wydatku" PlaceholderText="typ" FontSize="30" Width="200">
+            <TextBlock Name="lblKwota" Text="Kwota" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBox Name="txtKwota" PlaceholderText="0,00"  FontSize="30" TextChanged="txtKwota_TextChanged" Width="200"/>
+            <TextBlock Name="lblOpis" Text="Opis" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBox Name="txtOpis" PlaceholderText="opis" FontSize="30" Width="400"/>
+            <TextBlock Name="lblData" Text="Data" FontSize="30" HorizontalAlignment="Center"/>
+            <DatePicker Name="DatePickerData" FontSize="30" HorizontalAlignment="Center"/>
+            <ComboBox Name="comboBoxTypWydatku" PlaceholderText="Typ wydatku" FontSize="30" Width="250">
                 <x:String>Jedzenie</x:String>
                 <x:String>Elektronika</x:String>
                 <x:String>Zakupy online</x:String>

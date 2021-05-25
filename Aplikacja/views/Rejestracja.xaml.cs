@@ -144,5 +144,31 @@ namespace Aplikacja
         {
             Frame.GoBack();
         }
+
+        private void haslo_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            ToolTip toolTip = new ToolTip();
+            toolTip.Content = 
+@"schemat hasła: 
+* długość od 8-15 znaków
+* minimum jedna: 
+    -cyfra 
+    -mała litera
+    -duża litera
+    -znak specjalny: .#?!@$%^&*- ";
+            ToolTipService.SetToolTip(haslo, toolTip);
+        }
+
+        private void CheckBox_Changed(object sender, RoutedEventArgs e)
+        {
+            if (revealModeCheckBox.IsChecked == true)
+            {
+               haslo.PasswordRevealMode = PasswordRevealMode.Visible;
+            }
+            else
+            {
+                haslo.PasswordRevealMode = PasswordRevealMode.Hidden;
+            }
+        }
     }
 }

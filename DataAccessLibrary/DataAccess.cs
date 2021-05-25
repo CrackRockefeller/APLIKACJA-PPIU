@@ -53,8 +53,27 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
-                return "Blad podczas pobrania";
+                return "Blad";
             
+        }
+        public static void updateHasloUzytkownika(string haslo, int uzytkownicy_id)
+        {
+
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand updateCommand = new SqliteCommand
+                    ("UPDATE uzytkownicy set haslo = @haslo where uzytkownicy_id=@uzytkownicy_id", db);
+
+                updateCommand.Parameters.AddWithValue("@haslo", haslo);
+                updateCommand.Parameters.AddWithValue("@uzytkownicy_id", uzytkownicy_id);
+
+                updateCommand.ExecuteReader();
+
+                db.Close();
+            }
         }
         public static void updateEmailUzytkownika(string email, int uzytkownicy_id)
         {

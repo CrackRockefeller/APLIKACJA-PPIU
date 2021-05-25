@@ -94,7 +94,7 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
-            public static List<String> GetData(string email)
+        public static List<String> GetData(string email)
         {
             List<String> entries = new List<string>();
 
@@ -118,6 +118,54 @@ namespace DataAccessLibrary
             }
 
             return entries;
+        }
+        public static List<string> GetDataForDiagramsKwota(string email)
+        {
+            List<String> listaKwota = new List<string>();
+
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("select sum(kwota) as kwota, typWydatku from wydatki, uzytkownicy where uzytkownicy.uzytkownicy_id = wydatki.uzytkownicy_id and uzytkownicy.email=@email group by typWydatku", db);
+
+                selectCommand.Parameters.AddWithValue("@email", email);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+
+                    listaKwota.Add(query["kwota"].ToString());
+                }
+                db.Close();
+            }
+            return listaKwota;
+        }
+        public static List<string> GetDataForDiagramsTyp(string email)
+        {
+            List<String> listaTyp = new List<string>();
+
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("select sum(kwota) as kwota, typWydatku from wydatki, uzytkownicy where uzytkownicy.uzytkownicy_id = wydatki.uzytkownicy_id and uzytkownicy.email=@email group by typWydatku", db);
+
+                selectCommand.Parameters.AddWithValue("@email", email);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    listaTyp.Add(query["typWydatku"].ToString());
+                }
+                db.Close();
+            }
+
+            return listaTyp;
         }
         public static void dodajUzytkownika(string email, string imie, string haslo)
         {

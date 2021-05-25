@@ -36,19 +36,33 @@ namespace Aplikacja
         int a = rnd.Next(0, 10000);
 
         Uzytkownicy uzytkownik = new Uzytkownicy();
-
+        DispatcherTimer dt;
         public Rejestracja()
         {
             this.InitializeComponent();
+            dt = new DispatcherTimer();
+            dt.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            dt.Tick += Dt_Tick;
+            dt.Start();
+        }
+
+        private void Dt_Tick(object sender, object e)
+        {
+            var cl = Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.CapitalLock);
+            if (cl.HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Locked))
+            {
+                CapsLock.Text = "CapsLock jest włączony";
+            }
+            else
+            {
+                CapsLock.Text = "";
+            }
         }
 
         private void btnRejestracja_Click(object sender, RoutedEventArgs e)
         {
             BindingList<string> errList = new BindingList<string>();
 
-            
-
-            
             uzytkownik.email = email.Text;
             uzytkownik.imie = imie.Text;
             uzytkownik.haslo = haslo.Password;
@@ -76,9 +90,6 @@ namespace Aplikacja
                 {
                     StandardPopup.IsOpen = true;
                 }
-                
-                
-                
 
                 var message = new MimeMessage();
                 message.From.Add(new MailboxAddress("uwpApplication", "uwpapplication.uwpapplication@interia.pl"));
@@ -111,8 +122,6 @@ namespace Aplikacja
                 //Frame.GoBack();
             }
         }
-
-
 
         private void btnPowrot_Click(object sender, RoutedEventArgs e)
         {

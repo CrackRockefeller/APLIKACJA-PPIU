@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using DataAccessLibrary;
 
 namespace Aplikacja.Validators
 {
@@ -17,7 +18,9 @@ namespace Aplikacja.Validators
             RuleFor(p => p.email)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("{PropertyName}: jest puste!")
+                .Must(EmailExistance).WithMessage("{PropertyName}: już istnieje w bazie")
                 .Must(BeValidEmail).WithMessage("{PropertyName}: brak składni emaila!");
+                
 
             RuleFor(p => p.imie)
                 .Cascade(CascadeMode.Stop)
@@ -36,6 +39,21 @@ namespace Aplikacja.Validators
                 .Must(BeValidPassword).WithMessage("{PropertyName}: Hasło niewłaściwe!");
         }
 
+        protected bool EmailExistance(string email)
+        {
+            string recivedEmail = DataAccess.checkEmail(email)[0];
+            if (recivedEmail == "0")
+            {
+                Debug.WriteLine("nie ma jeszcze takiego emaila");
+                return true;
+            }
+            else
+            { 
+                
+                Debug.WriteLine("jest taki email w bazie");
+                return false;
+            }
+        }
         protected bool BeValidEmail(string email)
         {
             Regex rx = new Regex(@"\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b");

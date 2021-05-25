@@ -31,7 +31,6 @@
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
 
         </StackPanel>
-        <Button Content="Button" Margin="-422,723,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

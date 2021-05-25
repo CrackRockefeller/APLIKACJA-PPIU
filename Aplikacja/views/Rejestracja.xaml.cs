@@ -167,5 +167,17 @@ namespace Aplikacja
     -znak specjalny: .#?!@$%^&*- ";
             ToolTipService.SetToolTip(haslo, toolTip);
         }
+
+        private void CheckBox_Changed(object sender, RoutedEventArgs e)
+        {
+            if (revealModeCheckBox.IsChecked == true)
+            {
+               haslo.PasswordRevealMode = PasswordRevealMode.Visible;
+            }
+            else
+            {
+                haslo.PasswordRevealMode = PasswordRevealMode.Hidden;
+            }
+        }
     }
 }

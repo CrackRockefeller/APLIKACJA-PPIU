@@ -23,8 +23,28 @@
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Name="aktEmail" Grid.Row="1" Grid.Column="1" Text="To twoj mail"  Margin="10,10,10,10"/>
-            <TextBox Name="txtZmienEmail" Grid.Row="1" Grid.Column="1" PlaceholderText="Zmien email" Margin="0,20,10,10"/>
+            <TextBox Name="txtZmienEmail" Grid.Row="1" Grid.Column="1" PlaceholderText="Zmien email" Margin="0,20,10,10" Width="250" HorizontalAlignment="LEft"/>
+            <Popup x:Name="StandardPopup" Canvas.ZIndex="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-300 0 0 0">
+                <StackPanel MinWidth="300" MinHeight="250" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Background="AliceBlue">
+                    <TextBlock Text="Wprowadź kod, który otrzymałeś w mailu:" FontSize="24" Margin="5"/>
+                    <TextBox Name="kodTextBox" PlaceholderText="kod" Text="" Margin="5"/>
+                    <TextBlock Name="txtWyswietl" Text="" FontSize="24" Margin="5" Foreground="Red"/>
+                    <Button Name="potwierdz" Background="DodgerBlue" Foreground="White" Content="potwierdz" Click="potwierdz_Click" Margin="5"/>
+                </StackPanel>
+            </Popup>
             <Button Grid.Row="1" Grid.Column="1" Content="Zmień email" Click="btnZmienEmail"/>
+            <TextBlock Grid.Row="1"  Grid.Column="1" Name="txtError"/>
+            <PasswordBox PasswordRevealMode="Hidden" Name="psBZmienHaslo" Grid.Row="1" Grid.Column="1" PlaceholderText="Zmien haslo" Margin="0,20,10,10" Width="250" HorizontalAlignment="LEft" PointerEntered="psBZmienHaslo_PointerEntered">
+                <ToolTipService.ToolTip>
+                    <ToolTip CornerRadius="10" BorderThickness="1"/>
+                </ToolTipService.ToolTip>
+            </PasswordBox>
+            <PasswordBox PasswordRevealMode="Hidden" Name="psBZmienHasloPotwierdz" Grid.Row="1" Grid.Column="1" PlaceholderText="Potwierdz haslo" Width="250" HorizontalAlignment="Left"/>
+            <CheckBox Name="revealModeCheckBox" Content="Pokaż hasło"
+              IsChecked="False"
+              Checked="CheckBox_Changed" Unchecked="CheckBox_Changed"/>
+            <Button Grid.Row="1" Grid.Column="1" Content="Zmień haslo" Click="btnZmienHaslo" Margin="0,10"/>
+            <TextBlock Grid.Row="1"  Grid.Column="1" Name="txtError2"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="0" Background="#FF7E7E7E">
             <AppBarButton Name="cofnij" Label="wstecz" Click="btnCofnij">

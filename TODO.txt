@@ -1,4 +1,4 @@
 1. Dodawanie zdjęć.
 2. Rejestracja napisać że wysłano kod na maila, info że podano zły kod.
 3. SZYFRIWANIE HASŁO
-4. Odzyskaj hasło 
+4. Odzyskaj hasło (sprawdzanie kodu z maila -> zmiana hasła )

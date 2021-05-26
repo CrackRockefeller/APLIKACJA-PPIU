@@ -45,16 +45,17 @@
             </AppBarButton>
         </StackPanel>
 
-        <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Padding="20">
+        <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Padding="20" HorizontalAlignment="Center">
             <TextBlock Name="test" Text="" FontSize="30" HorizontalAlignment="Center"/>
             <TextBlock Name="test2" Text="" FontSize="30"/>
-            <TextBlock Name="lblKwota" Text="Kwota" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Name="lblKwota" Text="Kwota" FontSize="30" HorizontalAlignment="Center" Margin="10"/>
             <TextBox Name="txtKwota" PlaceholderText="0,00"  FontSize="30" TextChanged="txtKwota_TextChanged" Width="200"/>
-            <TextBlock Name="lblOpis" Text="Opis" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Name="lblOpis" Text="Opis" FontSize="30" HorizontalAlignment="Center" Margin="10"/>
             <TextBox Name="txtOpis" PlaceholderText="opis" FontSize="30" Width="400"/>
-            <TextBlock Name="lblData" Text="Data" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Name="lblData" Text="Data" FontSize="30" HorizontalAlignment="Center" Margin="10"/>
             <DatePicker Name="DatePickerData" FontSize="30" HorizontalAlignment="Center"/>
-            <ComboBox Name="comboBoxTypWydatku" PlaceholderText="Typ wydatku" FontSize="30" Width="250">
+            <TextBlock Text="Typ wydatku" FontSize="30" HorizontalAlignment="Center" Margin="10,10,10,10"/>
+            <ComboBox Name="comboBoxTypWydatku" SelectedIndex="3"  FontSize="30" Width="250" HorizontalAlignment="Center">
                 <x:String>Jedzenie</x:String>
                 <x:String>Elektronika</x:String>
                 <x:String>Zakupy online</x:String>

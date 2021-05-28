@@ -148,6 +148,7 @@ namespace Aplikacja
             }
         }
 
+
         private void CheckBox_Changed(object sender, RoutedEventArgs e)
         {
             if (revealModeCheckBox.IsChecked == true)
@@ -158,6 +159,12 @@ namespace Aplikacja
             {
                 PasswordTextBox.PasswordRevealMode = PasswordRevealMode.Hidden;
             }
+        }
+
+
+        private void RestoreButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RecoveryPassword),UsernameTextBox.Text);
         }
 
     }

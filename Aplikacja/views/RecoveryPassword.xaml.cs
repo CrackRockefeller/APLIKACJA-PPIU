@@ -110,11 +110,22 @@ namespace Aplikacja.views
         }
         private void ActiveButton()
         {
-            
-            if (UsernameTextBox.Text.Length > 0)
+            BindingList<string> errList = new BindingList<string>();
+            OnlyEmailValidator validator = new OnlyEmailValidator();
+            uzytkownik.email = UsernameTextBox.Text.ToString();
+            ValidationResult results2 = validator.Validate(uzytkownik);
+            if (results2.IsValid == false)
+            {
+                foreach (ValidationFailure faliure in results2.Errors)
+                {
+                    errList.Add($" {faliure.ErrorMessage}");
+                }
+            }
+            if (errList.Count == 0)
             {
                 PasswordResset.IsEnabled = true;
             }
+ 
             else
             {
                 PasswordResset.IsEnabled = false;
@@ -182,6 +193,10 @@ namespace Aplikacja.views
                 {
                     txtNiepasuje.Text = "Hasła się nie zgadzają.";
                 }
+            }
+            else
+            {
+                txtNiepasuje.Text = "Hasło musi zawierać 1 znak specjalny,1 liczbę, 1 dużą literę,\n Długość hasła 8-15 znaków";
             }
             
         }

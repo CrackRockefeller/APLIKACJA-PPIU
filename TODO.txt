@@ -4,3 +4,4 @@
 4. Wyróżnić kwotę na liście.
 5. Edytacja wprowadzonych danych.
 6. Zakres przedstawiania danych ( od-do )
+

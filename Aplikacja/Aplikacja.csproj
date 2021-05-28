@@ -134,6 +134,9 @@
     <Compile Include="views\PanelUzytkownika.xaml.cs">
       <DependentUpon>PanelUzytkownika.xaml</DependentUpon>
     </Compile>
+    <Compile Include="views\RecoveryPassword.xaml.cs">
+      <DependentUpon>RecoveryPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\Rejestracja.xaml.cs">
       <DependentUpon>Rejestracja.xaml</DependentUpon>
     </Compile>
@@ -180,6 +183,10 @@
     <Page Include="views\PanelUzytkownika.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="views\RecoveryPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\Rejestracja.xaml">
       <SubType>Designer</SubType>

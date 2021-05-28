@@ -1,7 +1,12 @@
 1. Dodawanie zdjęć.
+
 2. SZYFRIWANIE HASŁO
 3. Odzyskaj hasło 
 4. Usuwanie z listy
 5. Wyróżnić kwotę na liście.
 6. Edytacja wprowadzonych danych.
 7. Zakres przedstawiania danych ( od-do )
+
+
+4. Odzyskaj hasło (sprawdzanie kodu z maila -> zmiana hasła )
+

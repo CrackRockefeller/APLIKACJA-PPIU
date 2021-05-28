@@ -62,6 +62,18 @@ namespace Aplikacja
 
         private void txtKwota_TextChanged(object sender, TextChangedEventArgs e)
         {
+            int count = 0;
+            foreach (char przec in txtKwota.Text)
+                if (przec == ','||przec == '.')
+                {
+                    count++;
+                    if (count > 1)
+                    {
+                        txtKwota.Text = "";
+                    }
+                }
+            
+
             double kwotaWpisana = 0;
             try
             {

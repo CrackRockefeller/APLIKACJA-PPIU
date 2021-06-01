@@ -48,7 +48,7 @@
 
 
         </StackPanel>
-        <ListView Grid.Row="1" Grid.Column="1" Name="Output" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Margin="0,50,0,0">
+        <ListView Grid.Row="1" Grid.Column="1" Name="Output" VerticalAlignment="Top" ItemClick="Output_ItemClick" IsItemClickEnabled="True" HorizontalAlignment="Left" FontSize="15" Margin="0,50,0,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}"/>
@@ -58,7 +58,7 @@
         <StackPanel Grid.Row="1" Grid.Column="0" Background="#FF7E7E7E">
             <Image Margin="0 5 0 5" Source="/Assets/logo1.png" Width="50"/>
             <AppBarButton Name="btnDodaj"  Icon="Add" Label="Dodaj wpłatę" Click="btnDodaj_Click"/>
-            <AppBarButton Name="btnUsun"  Icon="Remove" Label="Usuń wpłatę" Click="btnUsun_Click"/>
+            <AppBarButton Name="btnUsun"  Icon="Remove" Label="Usuń wpłatę" Click="btnUsun_Click" Visibility="Collapsed"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Background="#FF7E7E7E">
             <AppBarButton Name="btnUstawienia" Label="ustawienia" Click="btnUstawienia_Click" >

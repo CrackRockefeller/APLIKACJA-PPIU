@@ -111,5 +111,10 @@ namespace Aplikacja.views
             Output.ItemsSource = DataAccess.GetData(test.Text);
             LoadChartContents();
         }
+
+        private void Output_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            btnUsun.Visibility = Visibility.Visible;
+        }
     }
 }

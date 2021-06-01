@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using Windows.Storage;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace DataAccessLibrary
 {
@@ -94,9 +95,9 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
-        public static List<String> GetData(string email)
+        public static ObservableCollection<String> GetData(string email)
         {
-            List<String> entries = new List<string>();
+            ObservableCollection<String> entries = new ObservableCollection<string>();
 
             string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
             using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
@@ -104,14 +105,14 @@ namespace DataAccessLibrary
                 db.Open();
 
                 SqliteCommand selectCommand = new SqliteCommand
-                    ("select kwota, opis, data, typWydatku from wydatki, uzytkownicy where uzytkownicy.uzytkownicy_id = wydatki.uzytkownicy_id and uzytkownicy.email= @email", db);
+                    ("select id, kwota, opis, data, typWydatku from wydatki, uzytkownicy where uzytkownicy.uzytkownicy_id = wydatki.uzytkownicy_id and uzytkownicy.email= @email", db);
 
                 selectCommand.Parameters.AddWithValue("@email", email);
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
                 while (query.Read())
                 {
-                    entries.Add(query["kwota"].ToString() + " " + query["data"].ToString() + " " + query["typWydatku"].ToString() + " " + query["opis"].ToString());
+                    entries.Add(query["id"].ToString() + " " + query["kwota"].ToString() + " " + query["data"].ToString() + " " + query["typWydatku"].ToString() + " " + query["opis"].ToString());
                 }
 
                 db.Close();
@@ -217,7 +218,27 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
-        public static List<String> checkUser(string email, string haslo)
+        public static void usunWpisUzytkownika(int id)
+        {
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db =
+              new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand deleteCommand = new SqliteCommand
+                {
+                    Connection = db,
+                    CommandText = "DELETE FROM wydatki where id = @id"
+                };
+                deleteCommand.Parameters.AddWithValue("@id", id);
+                deleteCommand.ExecuteReader();
+                db.Close();
+            }
+
+
+        }
+    public static List<String> checkUser(string email, string haslo)
         {
             List<String> entries = new List<string>();
 

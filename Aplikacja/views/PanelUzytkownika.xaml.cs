@@ -2,9 +2,11 @@
 using DataAccessLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -35,6 +37,7 @@ namespace Aplikacja.views
         {
             this.InitializeComponent();
             test.Text = localSettings.Values["loggedUser"].ToString();
+
             Output.ItemsSource = DataAccess.GetData(test.Text);
         }
 
@@ -96,6 +99,17 @@ namespace Aplikacja.views
             Frame.GoBack();
         }
 
+        private void btnUsun_Click(object sender, RoutedEventArgs e)
+        {
+            string kliknietyEl = Output.SelectedItem.ToString();
 
+            Regex rx = new Regex(@"^([\S]+)");
+            Match match = rx.Match(kliknietyEl);
+            String match2 = Convert.ToString(match);
+            int idmatch = Convert.ToInt32(match2);
+            DataAccess.usunWpisUzytkownika(idmatch);
+            Output.ItemsSource = DataAccess.GetData(test.Text);
+            LoadChartContents();
+        }
     }
 }

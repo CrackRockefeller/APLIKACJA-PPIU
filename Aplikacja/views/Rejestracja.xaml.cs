@@ -90,6 +90,8 @@ namespace Aplikacja
                 if (!StandardPopup.IsOpen)
                 {
                     StandardPopup.IsOpen = true;
+                    HidE.Visibility = Visibility.Collapsed;
+                    
                 }
 
                 var message = new MimeMessage();

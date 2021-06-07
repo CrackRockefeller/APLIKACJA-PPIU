@@ -35,7 +35,7 @@
             </Popup>
             <TextBlock Text="Rejestracja" FontSize="36" Margin="0 0 0 5" TextAlignment="Center"/>
             <TextBlock Text="{Binding}" Name="CapsLock" Foreground="Yellow" Width="225" TextAlignment="Center"/>
-            <StackPanel MaxWidth="260">
+            <StackPanel MaxWidth="260" Name="HidE">
 
 
                 <TextBox Name="email" Margin="4" PlaceholderText="Email"/>

@@ -238,6 +238,27 @@ namespace DataAccessLibrary
 
 
         }
+        public static void updateWpisUzytkownika(int id, double kwota)
+        {
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "appDatabase.db");
+            using (SqliteConnection db =
+              new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand updateCommand = new SqliteCommand
+                {
+                    Connection = db,
+                    CommandText = "UPDATE wydatki set kwota = @kwota where id=@id"
+                };
+                updateCommand.Parameters.AddWithValue("@id", id);
+                updateCommand.Parameters.AddWithValue("@kwota", kwota);
+                updateCommand.ExecuteReader();
+                db.Close();
+            }
+
+
+        }
     public static List<String> checkUser(string email, string haslo)
         {
             List<String> entries = new List<string>();

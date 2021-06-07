@@ -21,7 +21,6 @@
                         <TextBlock Text="{Binding}" Name="ErrorMessage" Foreground="Red" Width="225" TextAlignment="Left"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                <x:String>erooooooooorr</x:String>
             </ListView>
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="center">

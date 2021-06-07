@@ -63,25 +63,8 @@ namespace Aplikacja.views
             for (int i = 0; i < listaKwota.Count; i++)
             {
                 elementyDiagramu.Add(new Wydatki() { typ_wydatku = listaTyp[i], kwota = listaKwota[i] });
-            }
-            
-            //elementyDiagramu.Add(new Wydatki() { typ_wydatku = listaTyp[1], kwota = listaKwota[1] });
-            //elementyDiagramu.Add(new Wydatki() { typ_wydatku = listaTyp[2], kwota = listaKwota[2] });
-
+            } 
             (PieChart.Series[0] as PieSeries).ItemsSource = elementyDiagramu;
-            //Random rd = new Random();
-            //List<SmartPhone> lstSource = new List<SmartPhone>();
-            //lstSource.Add(new SmartPhone() { Name = "IPhone", Amount = rd.Next(0, 100) });
-            //lstSource.Add(new SmartPhone() { Name = "Android", Amount = rd.Next(0, 100) });
-            //lstSource.Add(new SmartPhone() { Name = "UWP", Amount = rd.Next(0, 100) });
-            //lstSource.Add(new SmartPhone() { Name = "Other", Amount = rd.Next(0, 100) });
-            //(ColumnChart.Series[0] as ColumnSeries).ItemsSource = lstSource;
-            //(PieChart.Series[0] as PieSeries).ItemsSource = lstSource;
-            //(LineChart.Series[0] as LineSeries).ItemsSource = lstSource;
-            //(BarChart.Series[0] as BarSeries).ItemsSource = lstSource;
-
-
-
         }
 
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
@@ -110,11 +93,71 @@ namespace Aplikacja.views
             DataAccess.usunWpisUzytkownika(idmatch);
             Output.ItemsSource = DataAccess.GetData(test.Text);
             LoadChartContents();
+            btnUsun.Visibility = Visibility.Collapsed;
+            btnModyfikuj.Visibility = Visibility.Collapsed;
+            txtModKwota.Visibility = Visibility.Collapsed;
+            txtUwaga.Visibility = Visibility.Collapsed;
         }
 
         private void Output_ItemClick(object sender, ItemClickEventArgs e)
         {
             btnUsun.Visibility = Visibility.Visible;
+            btnModyfikuj.Visibility = Visibility.Visible;
+            txtModKwota.Visibility = Visibility.Visible;
+        }
+
+        private void btnModyfikuj_Click(object sender, RoutedEventArgs e)
+        {
+            string kliknietyEl = Output.SelectedItem.ToString();
+
+            Regex rx = new Regex(@"^([\S]+)");
+            Match match = rx.Match(kliknietyEl);
+            String match2 = Convert.ToString(match);
+            int idmatch = Convert.ToInt32(match2);
+            String kwotaWpisana = txtModKwota.Text.Replace(",", ".");
+            if (kwotaWpisana != "")
+            {
+                double kwota = Convert.ToDouble(kwotaWpisana);
+                DataAccess.updateWpisUzytkownika(idmatch, kwota);
+                Output.ItemsSource = DataAccess.GetData(test.Text);
+                LoadChartContents();
+                btnModyfikuj.Visibility = Visibility.Collapsed;
+                txtModKwota.Visibility = Visibility.Collapsed;
+                txtUwaga.Text = "";
+                txtModKwota.Text = "";
+            }
+            else
+            {
+                txtUwaga.Visibility = Visibility.Visible;
+                txtUwaga.Text = "Wprowadz jakas kwote!";
+            }
+
+
+        }
+
+        private void txtModKwota_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int count = 0;
+            foreach (char przec in txtModKwota.Text)
+                if (przec == ',' || przec == '.')
+                {
+                    count++;
+                    if (count > 1)
+                    {
+                        txtModKwota.Text = "";
+                    }
+                }
+
+
+            double kwotaWpisana = 0;
+            try
+            {
+                kwotaWpisana = Convert.ToDouble(txtModKwota.Text);
+            }
+            catch
+            {
+                txtModKwota.Text = "";
+            }
         }
     }
 }

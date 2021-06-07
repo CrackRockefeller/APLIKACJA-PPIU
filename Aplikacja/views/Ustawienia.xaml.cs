@@ -42,7 +42,7 @@ namespace Aplikacja.views
                 message.To.Add(new MailboxAddress("uzytkownik", txtZmienEmail.Text));
                 message.Subject = "Kod aktywacyjny konto UWP; Aplikacja finansowa";
 
-                string txt = @"Czy na pewno chcesz zmienić swojego maila? ,<br>
+                string txt = @"Czy na pewno chcesz zmienić swojego maila?<br>
                                <p>Jeśli tak, wpisz ten kod do swojej aplikacji aby zmienić adres mail:</p><p>" + a.ToString() + @"</p><br>
                                <p>-- UWPApplication</p>";
 
@@ -56,7 +56,7 @@ namespace Aplikacja.views
                     client.Connect("poczta.interia.pl", 587, false);
 
                     // Note: only needed if the SMTP server requires authentication
-                    client.Authenticate("uwpapplication.uwpapplication@interia.pl", "1234567Mm.");
+                    client.Authenticate("uwpapplication.uwpapplication@interia.pl", "1234567Mm.0");
                     Debug.WriteLine("The mail has been sent successfully !!");
                     client.Send(message);
                     client.Disconnect(true);

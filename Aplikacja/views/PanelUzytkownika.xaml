@@ -22,13 +22,13 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="2">
-            <TextBlock Text="diagramy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Grid.Column="2" Height="608" VerticalAlignment="Bottom">
             <Charting:Chart x:Name="PieChart" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row ="0" Grid.Column="1" Width="399"
                         Height="200">
-                <Charting:PieSeries Title="Smart Phone Popular" Margin="0" IndependentValuePath="typ_wydatku" DependentValuePath="kwota" IsSelectionEnabled="True"/>
+                <Charting:PieSeries Title="Wydatki ogolne" Margin="0" IndependentValuePath="typ_wydatku" DependentValuePath="kwota" IsSelectionEnabled="True"/>
             </Charting:Chart>
-            
+            <TextBox Name="txtModKwota" Width="250" TextChanged="txtModKwota_TextChanged" Visibility="Collapsed" PlaceholderText="Modyfikuj kwotę"/>
+            <TextBlock Name="txtUwaga" Width="250"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="5 0 0 0">
             <TextBlock Name="test" HorizontalAlignment="Center" FontSize="30" Margin="0 0 0 10"/>
@@ -46,6 +46,7 @@
             <Image Margin="0 5 0 5" Source="/Assets/logo1.png" Width="50"/>
             <AppBarButton Name="btnDodaj"  Icon="Add" Label="Dodaj wpłatę" Click="btnDodaj_Click"/>
             <AppBarButton Name="btnUsun"  Icon="Remove" Label="Usuń wpłatę" Click="btnUsun_Click" Visibility="Collapsed"/>
+            <AppBarButton Name="btnModyfikuj"  Icon="Upload" Label="Modyfikuj wpłatę" Click="btnModyfikuj_Click" Visibility="Collapsed"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Background="#FF7E7E7E">
             <AppBarButton Name="btnUstawienia" Label="ustawienia" Click="btnUstawienia_Click" >

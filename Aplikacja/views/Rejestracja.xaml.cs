@@ -111,7 +111,7 @@ namespace Aplikacja
                     client.Connect("poczta.interia.pl", 587, false);
                     
                     // Note: only needed if the SMTP server requires authentication
-                    client.Authenticate("uwpapplication.uwpapplication@interia.pl", "1234567Mm.");
+                    client.Authenticate("uwpapplication.uwpapplication@interia.pl", "1234567Mm.0");
                     Debug.WriteLine("The mail has been sent successfully !!");
                     client.Send(message);
                     client.Disconnect(true);

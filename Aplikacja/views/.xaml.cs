@@ -84,10 +84,5 @@ namespace Aplikacja
                 txtKwota.Text = "";
             }
         }
-
-        private void btnUstawienia_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(views.Ustawienia));
-        }
     }
 }

@@ -1,5 +1,5 @@
 imie,nazwisko: uwpApplication
 nazwaKonta: uwpapplication.uwpapplication
-haslo:1234567Mm.
+haslo:1234567Mm.0
 
 email: uwpapplication.uwpapplication@interia.pl

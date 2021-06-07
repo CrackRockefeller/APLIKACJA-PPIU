@@ -21,40 +21,27 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="1" Grid.Column="1"  Name="test" HorizontalAlignment="Center" FontSize="30"/>
+
         <StackPanel Grid.Row="1" Grid.Column="2">
-
             <TextBlock Text="diagramy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <!--<Charting:Chart x:Name="ColumnChart" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Width="399"
-                        Height="200">
-                <Charting:ColumnSeries Title="Smart Phone Popular" Margin="0" IndependentValuePath="typ_wydatku" DependentValuePath="kwota" IsSelectionEnabled="True"/>
-            </Charting:Chart>-->
-
             <Charting:Chart x:Name="PieChart" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row ="0" Grid.Column="1" Width="399"
                         Height="200">
                 <Charting:PieSeries Title="Smart Phone Popular" Margin="0" IndependentValuePath="typ_wydatku" DependentValuePath="kwota" IsSelectionEnabled="True"/>
             </Charting:Chart>
-
-            <!--<Charting:Chart x:Name="LineChart" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row ="0" Grid.Column="2" Width="399"
-                        Height="200">
-                <Charting:LineSeries Title="Smart Phone Popular" Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
-            </Charting:Chart>
-
-            <Charting:Chart x:Name="BarChart" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row ="1" Grid.Column="0" Width="399"
-                        Height="200">
-                <Charting:BarSeries Title="Smart Phone Popular" Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
-            </Charting:Chart>-->
-
-
-
+            
         </StackPanel>
-        <ListView Grid.Row="1" Grid.Column="1" Name="Output" VerticalAlignment="Top" ItemClick="Output_ItemClick" IsItemClickEnabled="True" HorizontalAlignment="Left" FontSize="15" Margin="0,50,0,0">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5 0 0 0">
+            <TextBlock Name="test" HorizontalAlignment="Center" FontSize="30" Margin="0 0 0 10"/>
+            <TextBlock Text="id  |  kwota  |   data  |   typWydatku  |   opis"  HorizontalAlignment="Center"/>
+            <ListView  Name="Output" VerticalAlignment="Top" ItemClick="Output_ItemClick" IsItemClickEnabled="True" HorizontalAlignment="Left" FontSize="15">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
         <StackPanel Grid.Row="1" Grid.Column="0" Background="#FF7E7E7E">
             <Image Margin="0 5 0 5" Source="/Assets/logo1.png" Width="50"/>
             <AppBarButton Name="btnDodaj"  Icon="Add" Label="Dodaj wpłatę" Click="btnDodaj_Click"/>

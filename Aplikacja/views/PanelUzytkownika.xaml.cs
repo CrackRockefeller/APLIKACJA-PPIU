@@ -122,6 +122,7 @@ namespace Aplikacja.views
                 Output.ItemsSource = DataAccess.GetData(test.Text);
                 LoadChartContents();
                 btnModyfikuj.Visibility = Visibility.Collapsed;
+                btnUsun.Visibility = Visibility.Collapsed;
                 txtModKwota.Visibility = Visibility.Collapsed;
                 txtUwaga.Text = "";
                 txtModKwota.Text = "";

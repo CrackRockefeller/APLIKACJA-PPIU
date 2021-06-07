@@ -112,7 +112,7 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                    entries.Add(query["id"].ToString() + " | " + query["kwota"].ToString() + " | " + query["data"].ToString() + " | " + query["typWydatku"].ToString() + " | " + query["opis"].ToString());
+                    entries.Add(query["id"].ToString() + " | " + query["kwota"].ToString() + " zł | " + query["data"].ToString() + " | " + query["typWydatku"].ToString() + " | " + query["opis"].ToString());
                 }
 
                 db.Close();
